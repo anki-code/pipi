@@ -1,0 +1,31 @@
+#!/usr/bin/env xonsh
+# PYTHON_ARGCOMPLETE_OK
+import argparse
+import argcomplete
+
+if len($ARGS) == 1:
+    print('The pipi tool is to install PyPi packages using pip from any source: dir, PyPi projects, Github.\n')
+    print('Examples:')
+    print(' * install from dir:     pipi .')
+    print(' * install from repo:    pipi https://github.com/anki-code/xontrib-prompt-bar')
+    print(' * install from branch:  pipi https://github.com/anki-code/xonsh/tree/history_json_dir')
+    print(' * install from git:     pipi git@github.com:xonsh/xonsh.git')
+    exit(1)
+
+args = $ARGS[1:]
+source = args[0]
+
+if 'https://github.com' in source:
+    source = 'git+' + source.replace('/tree/', '@')
+elif '@github.com:' in source and source.endswith('.git'):
+    source = 'git+ssh://' + source.replace(':', '/')
+
+print('pip install from ' + source)
+
+args[0] = source
+
+if '--debug' in args:
+    $XONSH_TRACE_SUBPROC = True
+    args = [a for a in args if a != '--debug']
+
+python -m pip install -U @(args)
