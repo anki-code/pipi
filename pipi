@@ -1,7 +1,4 @@
 #!/usr/bin/env xonsh
-# PYTHON_ARGCOMPLETE_OK
-import argparse
-import argcomplete
 
 if len($ARGS) == 1:
     print('The pipi tool is to install PyPi packages using pip from any source: dir, PyPi projects, Github.\n')
