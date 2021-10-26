@@ -18,8 +18,8 @@ python -m pip install -U git+https://github.com/anki-code/pipi
 ## Usage
 
 ```bash
-pipi .  # install from dir
-pipi https://github.com/anki-code/xontrib-prompt-bar  # install from repo
+pipi .                                                         # install from dir
+pipi https://github.com/anki-code/xontrib-prompt-bar           # install from repo
 pipi https://github.com/anki-code/xonsh/tree/history_json_dir  # install from branch
-pipi git@github.com:xonsh/xonsh.git  # install from git
+pipi git@github.com:xonsh/xonsh.git                            # install from git
 ```
